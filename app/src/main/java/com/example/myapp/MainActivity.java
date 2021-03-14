@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         ListItem listItem = new ListItem();
         listItem.setTask("This is our test task");
         listItem.setStatus(0);
-        listItem.setColor(R.color.teal_200);
+        listItem.setColor(R.color.white);
         listItems.add(listItem);
         listItems.add(listItem);
         listItems.add(listItem);

@@ -43,7 +43,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
             PopupMenu p = new PopupMenu(context, holder.linearLayout);
             p.getMenuInflater().inflate(R.menu.popup, p.getMenu());
             p.setOnMenuItemClickListener(item -> {
-                MyDialogFragment fragment = new MyDialogFragment();
+                ColorSelectorFragment fragment = new ColorSelectorFragment();
                 fragment.show(((AppCompatActivity)context).getSupportFragmentManager(),"Dialog Fragment");
                 return true;
             });

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyDialogFragment extends DialogFragment {
+public class ColorSelectorFragment extends DialogFragment {
 
     RecyclerView recyclerView;
     ColorAdapter colorAdapter;
@@ -20,7 +20,7 @@ public class MyDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_dialog, container, false);
+        return inflater.inflate(R.layout.fragment_color_selector, container, false);
     }
 
     @Override
