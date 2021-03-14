@@ -3,6 +3,7 @@ package com.example.myapp;
 public class ListItem {
     private int id,status;
     private String task;
+    private int color;
 
     public int getId() {
         return id;
@@ -26,5 +27,13 @@ public class ListItem {
 
     public void setTask(String task) {
         this.task = task;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }

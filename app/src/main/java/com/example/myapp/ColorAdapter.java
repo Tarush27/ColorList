@@ -33,17 +33,13 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
     public int getItemCount() {
         return color.size();
     }
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         View v1;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
             v1 = itemView.findViewById(R.id.v1);
         }
-
-        @Override
-        public void onClick(View v) {}
     }
 }

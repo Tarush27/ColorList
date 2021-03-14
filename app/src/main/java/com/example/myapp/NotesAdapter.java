@@ -2,32 +2,23 @@ package com.example.myapp;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentController;
-import androidx.fragment.app.FragmentManager;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
-import java.util.ConcurrentModificationException;
 import java.util.List;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
+public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
 
-    public Adapter(List<ListItem> listItems, Context context) {
+    public NotesAdapter(List<ListItem> listItems, Context context) {
         this.listItems = listItems;
         this.context = context;
     }
@@ -47,6 +38,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         ListItem listItem = listItems.get(position);
         holder.editText.setText(listItem.getTask());
         holder.checkBox.setChecked(toBool(listItem.getStatus()));
+        holder.noteContainer.setCardBackgroundColor(listItem.getColor());
         holder.linearLayout.setOnClickListener(v -> {
             PopupMenu p = new PopupMenu(context, holder.linearLayout);
             p.getMenuInflater().inflate(R.menu.popup, p.getMenu());
@@ -73,12 +65,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         public CheckBox checkBox;
         public LinearLayout linearLayout;
         public EditText editText;
+        public CardView noteContainer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             checkBox = itemView.findViewById(R.id.cb1);
             linearLayout = itemView.findViewById(R.id.linear);
             editText = itemView.findViewById(R.id.et1);
+            noteContainer = itemView.findViewById(R.id.card_note_container);
         }
     }
 }
