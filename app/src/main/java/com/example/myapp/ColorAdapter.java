@@ -3,6 +3,7 @@ package com.example.myapp;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> {
-    List<Integer> color = Arrays.asList(Color.MAGENTA,Color.GREEN,Color.RED,Color.BLACK,Color.BLUE);
+    List<Integer> color = Arrays.asList(Color.MAGENTA, Color.GREEN, Color.RED, Color.BLACK, Color.BLUE);
+    private final ColorSelectedCallback colorSelectedCallback;
+
+    public ColorAdapter(ColorSelectedCallback colorSelectedCallback) {
+        this.colorSelectedCallback = colorSelectedCallback;
+    }
+
     @NonNull
     @Override
     public ColorAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -25,6 +32,9 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ColorAdapter.ViewHolder holder, int position) {
         holder.v1.setBackgroundResource(R.drawable.list_drawable);
+        holder.v1.setOnClickListener(v -> {
+            colorSelectedCallback.onColorSelected(color.get(position));
+        });
         GradientDrawable gd = (GradientDrawable) holder.v1.getBackground();
         gd.setColor(color.get(position));
     }
@@ -33,6 +43,7 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
     public int getItemCount() {
         return color.size();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         View v1;

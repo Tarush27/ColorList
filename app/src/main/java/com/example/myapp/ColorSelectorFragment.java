@@ -16,6 +16,8 @@ public class ColorSelectorFragment extends DialogFragment {
 
     RecyclerView recyclerView;
     ColorAdapter colorAdapter;
+    private ColorSelectedCallback colorSelectedCallback;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -27,13 +29,15 @@ public class ColorSelectorFragment extends DialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.recyclerView);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(),3);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(), 3);
         gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); // set Horizontal Orientation
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
-        colorAdapter = new ColorAdapter();
+        colorAdapter = new ColorAdapter(colorSelectedCallback);
         recyclerView.setAdapter(colorAdapter);
-
     }
 
+    void setColorSelectedCallback(ColorSelectedCallback colorSelectedCallback) {
+        this.colorSelectedCallback = colorSelectedCallback;
+    }
 }

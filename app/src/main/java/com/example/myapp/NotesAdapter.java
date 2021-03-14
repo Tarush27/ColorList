@@ -44,6 +44,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
             p.getMenuInflater().inflate(R.menu.popup, p.getMenu());
             p.setOnMenuItemClickListener(item -> {
                 ColorSelectorFragment fragment = new ColorSelectorFragment();
+                fragment.setColorSelectedCallback(color -> {
+                    fragment.dismiss();
+                    holder.noteContainer.setCardBackgroundColor(color);
+                });
                 fragment.show(((AppCompatActivity)context).getSupportFragmentManager(),"Dialog Fragment");
                 return true;
             });
