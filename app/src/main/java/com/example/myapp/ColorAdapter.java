@@ -15,7 +15,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> {
-    List<Integer> color = Arrays.asList(Color.MAGENTA, Color.GREEN, Color.RED, Color.BLACK, Color.BLUE);
+    List<Integer> color = Arrays.asList(Color.MAGENTA, Color.GREEN, Color.rgb(195, 155, 211),
+            Color.rgb(233, 118, 81), Color.rgb(233, 221, 104),
+            Color.rgb(133, 146, 158));
     private final ColorSelectedCallback colorSelectedCallback;
 
     public ColorAdapter(ColorSelectedCallback colorSelectedCallback) {
